@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade 4 Unit 1 Reading Test</title>
+</head>
+<body>
+    <h1>Grade 4 Unit 1 Reading Test</h1>
+    <p><strong>Standards:</strong> RL.4.1, RL.4.2, RL.4.4, L.4.2</p>
+    <form id="quizForm">
+        <div class="question">
+            <p><strong>Student Name (required):</strong></p>
+            <input type="text" name="studentName" id="studentName" required>
+        </div>
+        <p><strong>Read the passage and answer the questions that follow.</strong></p>
+        <div class="passage">
+            <p>Once upon a time in a vibrant forest, there lived a clever fox named Felix. Felix loved exploring and learning about the world around him. One day, while wandering near the river, Felix discovered a strange, glowing stone. Curious, he picked it up and suddenly found himself understanding the language of the birds. Amazed, Felix spent days talking to his feathered friends, learning their stories and secrets.</p>
+        </div>
+
+        <!-- Questions follow -->
+        <div class="question">
+            <p><strong>1a. What is the best summary of the passage?</strong></p>
+            <label><input type="radio" name="q1a" value="a"> Felix finds a stone and loses it in the forest.</label><br>
+            <label><input type="radio" name="q1a" value="b"> Felix finds a magical stone and talks to birds.</label><br>
+            <label><input type="radio" name="q1a" value="c"> Felix is a bird who finds a glowing stone.</label><br>
+            <label><input type="radio" name="q1a" value="d"> Felix likes to collect glowing stones.</label>
+        </div>
+
+        <div class="question">
+            <p><strong>1b. Use details from the text to support your answer.</strong></p>
+            <textarea id="openq1b" rows="4" cols="50"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>2a. What is the meaning of the word "feathered" in the sentence "Felix spent days talking to his feathered friends"?</strong></p>
+            <label><input type="radio" name="q2a" value="a"> Birds</label><br>
+            <label><input type="radio" name="q2a" value="b"> Trees</label><br>
+            <label><input type="radio" name="q2a" value="c"> Stones</label><br>
+            <label><input type="radio" name="q2a" value="d"> Foxes</label>
+        </div>
+
+        <div class="question">
+            <p><strong>2b. Which detail from the story best helps the reader understand the meaning of "feathered"?</strong></p>
+            <label><input type="radio" name="q2b" value="a"> Felix picked up the stone.</label><br>
+            <label><input type="radio" name="q2b" value="b"> Felix wandered near the river.</label><br>
+            <label><input type="radio" name="q2b" value="c"> Felix discovered a glowing stone.</label><br>
+            <label><input type="radio" name="q2b" value="d"> Felix talked to birds.</label>
+        </div>
+
+        <div class="question">
+            <p><strong>3a. Which sentence best states the theme of the story?</strong></p>
+            <label><input type="radio" name="q3a" value="a"> Magic is real.</label><br>
+            <label><input type="radio" name="q3a" value="b"> It's fun to talk to birds.</label><br>
+            <label><input type="radio" name="q3a" value="c"> Clever foxes always win.</label><br>
+            <label><input type="radio" name="q3a" value="d"> Curiosity can lead to amazing discoveries.</label>
+        </div>
+
+        <div class="question">
+            <p><strong>3b. Which two details from the passage support the theme?</strong></p>
+            <label><input type="checkbox" name="q3b" value="a"> Felix was clever.</label><br>
+            <label><input type="checkbox" name="q3b" value="b"> He loved exploring.</label><br>
+            <label><input type="checkbox" name="q3b" value="c"> He found a glowing stone.</label><br>
+            <label><input type="checkbox" name="q3b" value="d"> He could talk to birds.</label>
+        </div>
+
+        <div class="question">
+            <p><strong>4a. Write a sentence using correct capitalization and punctuation that describes Felix's adventure.</strong></p>
+            <textarea id="openq4a" rows="4" cols="50"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>4b. Which two sentences use correct capitalization and punctuation?</strong></p>
+            <label><input type="checkbox" name="q4b" value="a"> felix found a Stone by the river.</label><br>
+            <label><input type="checkbox" name="q4b" value="b"> Felix found a stone by the river.</label><br>
+            <label><input type="checkbox" name="q4b" value="c"> The birds, talked to felix every day.</label><br>
+            <label><input type="checkbox" name="q4b" value="d"> The birds talked to Felix every day.</label>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const endpointURL = "https://script.google.com/a/macros/u-46.org/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec";
+
+        document.getElementById("quizForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById("studentName").value.trim();
+            const requiredRadios = ["q1a", "q2a", "q2b", "q3a"];
+            const requiredCheckboxGroups = { q3b: 2, q4b: 2 };
+            const openTextIds = ["openq1b", "openq4a"];
+            let incomplete = false;
+
+            for (let q of requiredRadios) {
+                if (!document.querySelector(`input[name="${q}"]:checked`)) {
+                    alert(`Please answer question ${q.toUpperCase()}.`);
+                    return;
+                }
+            }
+
+            for (let group in requiredCheckboxGroups) {
+                const checked = document.querySelectorAll(`input[name="${group}"]:checked`);
+                if (checked.length < requiredCheckboxGroups[group]) {
+                    alert(`Please select ${requiredCheckboxGroups[group]} answers for ${group.toUpperCase()}.`);
+                    return;
+                }
+            }
+
+            for (let id of openTextIds) {
+                if (document.getElementById(id).value.trim() === "") {
+                    alert("Please complete all written response questions.");
+                    return;
+                }
+            }
+
+            if (!name) {
+                alert("Please enter your name.");
+                return;
+            }
+
+            const formData = {
+                name: name,
+                q1a: document.querySelector('input[name="q1a"]:checked').value,
+                q1b: document.getElementById("openq1b").value.trim(),
+                q2a: document.querySelector('input[name="q2a"]:checked').value,
+                q2b: document.querySelector('input[name="q2b"]:checked').value,
+                q3a: document.querySelector('input[name="q3a"]:checked').value,
+                q3b: Array.from(document.querySelectorAll('input[name="q3b"]:checked')).map(cb => cb.value),
+                q4a: document.getElementById("openq4a").value.trim(),
+                q4b: Array.from(document.querySelectorAll('input[name="q4b"]:checked')).map(cb => cb.value),
+            };
+
+            fetch(endpointURL, {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.text())
+            .then(response => {
+                alert("Form submitted successfully!");
+                document.getElementById("quizForm").reset();
+            })
+            .catch(err => {
+                console.error("Submission error:", err);
+                alert("There was a problem submitting your form.");
+            });
+        });
+    </script>
+</body>
+</html>
