@@ -54,9 +54,7 @@
 	<p><strong>16.</strong> At last, after three months, election night arrived. My mom told me, “Remember, Jasmine, no matter what happens, we’ve already won. We tried our hardest, and we’ve brought our community together. That’s no small thing.” I nodded, but my stomach felt like it was full of butterflies. I knew my mom was right, but I still really wanted her to win.</p>
 	<p><strong>17.</strong> Finally, the news anchor cleared her throat, and the room went silent. “It’s been a tight city council race in Ward 6 between current representative Frank LaValle and challenger Kyla Walker,” the anchor said. “The final ballots are in, and the winner is . . .”The butterflies in my stomach went wild. “Kyla Walker!”</p>
   
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Map_of_USA_IL.svg" style="display: block; margin: auto; width: 80%;">
-
-        <h2>Questions</h2>
+       <h2>Questions</h2>
 
       <form id="quizForm">
 
@@ -76,7 +74,7 @@
         <div class="question">
             <p><strong>2a. Select the statement that <u>best</u> describes what kind of city council leader Jasmine’s mother would be if she won the election. (RL.4.1)</strong></p>
             <input type="radio" name="q2a" value="a"> a) Jasmine’s mother would be a caring leader. <br>
-            <input type="radio" name="q2a" value="Ab"> b) Jasmine’s mother would be an organized leader. <br>
+            <input type="radio" name="q2a" value="b"> b) Jasmine’s mother would be an organized leader. <br>
             <input type="radio" name="q2a" value="c"> c) Jasmine’s mother would be an empathetic leader. <br>
             <input type="radio" name="q2a" value="d"> d) Jasmine’s mother would be a hardworking leader. <br>
         </div>
@@ -130,42 +128,34 @@
 	</form>
 
 <script>
-    const endpointURL = https://script.google.com/a/macros/u-46.org/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec
+    const endpointURL = "https://script.google.com/a/macros/u-46.org/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec";
 
     document.getElementById("quizForm").addEventListener("submit", function(e) {
         e.preventDefault();
 
-        // Check required fields
         const name = document.getElementById("studentName").value.trim();
         const requiredRadios = ["q1a", "q2a", "q2b", "q3a"];
         const requiredCheckboxGroups = { q3b: 2, q4b: 2 };
         const openTextIds = ["openq1b", "openq4a"];
-        let incomplete = false;
 
-        // Check radio buttons
         for (let q of requiredRadios) {
             if (!document.querySelector(`input[name="${q}"]:checked`)) {
                 alert(`Please answer question ${q.toUpperCase()}.`);
-                incomplete = true;
                 return;
             }
         }
 
-        // Check checkboxes
         for (let group in requiredCheckboxGroups) {
             const checked = document.querySelectorAll(`input[name="${group}"]:checked`);
             if (checked.length < requiredCheckboxGroups[group]) {
                 alert(`Please select ${requiredCheckboxGroups[group]} answers for ${group.toUpperCase()}.`);
-                incomplete = true;
                 return;
             }
         }
 
-        // Check text areas
         for (let id of openTextIds) {
             if (document.getElementById(id).value.trim() === "") {
                 alert("Please complete all written response questions.");
-                incomplete = true;
                 return;
             }
         }
@@ -175,7 +165,6 @@
             return;
         }
 
-        // Gather responses
         const formData = {
             name: name,
             q1a: document.querySelector('input[name="q1a"]:checked').value,
@@ -196,7 +185,7 @@
             }
         })
         .then(res => res.text())
-        .then(response => {
+        .then(() => {
             alert("Form submitted successfully!");
             document.getElementById("quizForm").reset();
         })
