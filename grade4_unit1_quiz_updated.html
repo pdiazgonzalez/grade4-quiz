@@ -130,11 +130,8 @@
     <strong>Score:</strong> <span id="scoreValue"></span>
 </div>
 
-html
-Copy
-Edit
 <script>
-    const endpointURL = "YOUR_APPS_SCRIPT_URL"; // Replace with your deployed Apps Script URL
+    const endpointURL = "https://script.google.com/macros/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec"; // Replace with your deployed Apps Script URL
 
     // Answer key for auto-scoring
     const answerKey = {
@@ -244,88 +241,6 @@ Edit
 
         // Reset form
         document.getElementById("quizForm").reset();
-    });
-</script>
-
-<script>
-    const endpointURL = "https://script.google.com/macros/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec"; // Replace with your deployed Apps Script URL
-
-    document.getElementById("quizForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById("studentName").value.trim();
-        const requiredRadios = ["q1a", "q2a", "q2b", "q3a"];
-        const requiredCheckboxGroups = { q3b: 2, q4b: 2 };
-        const openTextIds = ["openq1b", "openq4a"];
-
-        // Validate radio questions
-        for (let q of requiredRadios) {
-            if (!document.querySelector(`input[name="${q}"]:checked`)) {
-                alert(`Please answer question ${q.toUpperCase()}.`);
-                return;
-            }
-        }
-
-        // Validate checkbox questions
-        for (let group in requiredCheckboxGroups) {
-            const checked = document.querySelectorAll(`input[name="${group}"]:checked`);
-            if (checked.length < requiredCheckboxGroups[group]) {
-                alert(`Please select ${requiredCheckboxGroups[group]} answers for ${group.toUpperCase()}.`);
-                return;
-            }
-        }
-
-        // Validate open text questions
-        for (let id of openTextIds) {
-            if (document.getElementById(id).value.trim() === "") {
-                alert("Please complete all written response questions.");
-                return;
-            }
-        }
-
-        if (!name) {
-            alert("Please enter your name.");
-            return;
-        }
-
-        // Gather data
-        const formData = {
-            name: name,
-            q1a: document.querySelector('input[name="q1a"]:checked').value,
-            q1b: document.getElementById("openq1b").value.trim(),
-            q2a: document.querySelector('input[name="q2a"]:checked').value,
-            q2b: document.querySelector('input[name="q2b"]:checked').value,
-            q3a: document.querySelector('input[name="q3a"]:checked').value,
-            q3b: Array.from(document.querySelectorAll('input[name="q3b"]:checked')).map(cb => cb.value),
-            q4a: document.getElementById("openq4a").value.trim(),
-            q4b: Array.from(document.querySelectorAll('input[name="q4b"]:checked')).map(cb => cb.value),
-        };
-
-        // Send to Google Apps Script
-        fetch(endpointURL, {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(response => {
-            if (response.status === "success") {
-                // Show the results box
-                document.getElementById("scoreValue").textContent = `${response.score} / ${response.totalPossible}`;
-                document.getElementById("resultsBox").style.display = "block";
-
-                // Reset form
-                document.getElementById("quizForm").reset();
-            } else {
-                alert("There was a problem submitting your form. Please try again.");
-            }
-        })
-        .catch(err => {
-            console.error("Submission error:", err);
-            alert("There was a problem submitting your form.");
-        });
     });
 </script>
 
