@@ -126,6 +126,9 @@
 	<button type="submit">Submit</button>
 	
 	</form>
+<div id="resultsBox" style="display:none; margin-top:20px; padding:15px; border:2px solid #4CAF50; border-radius:8px; background-color:#e8f5e9; font-size:18px; color:#2e7d32;">
+    <strong>Score:</strong> <span id="scoreValue"></span>
+</div>
 
 <script>
     const endpointURL = "https://script.google.com/macros/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec"; // Replace with your deployed Apps Script URL
@@ -138,7 +141,7 @@
         const requiredCheckboxGroups = { q3b: 2, q4b: 2 };
         const openTextIds = ["openq1b", "openq4a"];
 
-        // Check required radio questions
+        // Validate radio questions
         for (let q of requiredRadios) {
             if (!document.querySelector(`input[name="${q}"]:checked`)) {
                 alert(`Please answer question ${q.toUpperCase()}.`);
@@ -146,7 +149,7 @@
             }
         }
 
-        // Check required checkbox questions
+        // Validate checkbox questions
         for (let group in requiredCheckboxGroups) {
             const checked = document.querySelectorAll(`input[name="${group}"]:checked`);
             if (checked.length < requiredCheckboxGroups[group]) {
@@ -155,7 +158,7 @@
             }
         }
 
-        // Check required text areas
+        // Validate open text questions
         for (let id of openTextIds) {
             if (document.getElementById(id).value.trim() === "") {
                 alert("Please complete all written response questions.");
@@ -168,7 +171,7 @@
             return;
         }
 
-        // Gather all data
+        // Gather data
         const formData = {
             name: name,
             q1a: document.querySelector('input[name="q1a"]:checked').value,
@@ -181,7 +184,7 @@
             q4b: Array.from(document.querySelectorAll('input[name="q4b"]:checked')).map(cb => cb.value),
         };
 
-        // Send to Apps Script
+        // Send to Google Apps Script
         fetch(endpointURL, {
             method: "POST",
             body: JSON.stringify(formData),
@@ -192,7 +195,11 @@
         .then(res => res.json())
         .then(response => {
             if (response.status === "success") {
-                alert(`✅ Form submitted!\nYour Score: ${response.score} / ${response.totalPossible}`);
+                // Show the results box
+                document.getElementById("scoreValue").textContent = `${response.score} / ${response.totalPossible}`;
+                document.getElementById("resultsBox").style.display = "block";
+
+                // Reset form
                 document.getElementById("quizForm").reset();
             } else {
                 alert("There was a problem submitting your form. Please try again.");
