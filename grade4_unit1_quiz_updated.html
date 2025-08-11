@@ -131,7 +131,7 @@
 </div>
 
 <script>
-    const endpointURL = "https://script.google.com/macros/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec"; // Replace with your deployed Apps Script URL
+    const endpointURL = "https://script.google.com/macros/s/AKfycbyPeCu9GYWXsl75xiowGisnGXWVBGSXFK87xI7q6PZbwE_NMT58JRVwcFOfvLvfkk0n/exec"; // Replace with your deployed Apps Script URL
 
     // Answer key
     const answerKey = {
@@ -236,7 +236,7 @@
         document.getElementById("resultsBox").style.display = "block";
 
         // Send to Google Apps Script
-        fetch("https://docs.google.com/spreadsheets/d/1QKsQwE_7-cbRagWx1xcrR3x_WLJLJHsmivQMT_pf_vY/edit?gid=0#gid=0", {
+        fetch(endpointURL, {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" }
