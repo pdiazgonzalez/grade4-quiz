@@ -236,7 +236,7 @@
         document.getElementById("resultsBox").style.display = "block";
 
         // Send to Google Apps Script
-        fetch("https://script.google.com/macros/s/AKfycbzKM5lhaQv8K9hJwshp5fvwTMerTyuHwY3v1USvi3N5c7OwOdcqyNX1ugxuYvN_cikU/exec", {
+        fetch("https://docs.google.com/spreadsheets/d/1QKsQwE_7-cbRagWx1xcrR3x_WLJLJHsmivQMT_pf_vY/edit?gid=0#gid=0", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" }
