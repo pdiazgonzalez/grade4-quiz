@@ -1,4 +1,4 @@
- 
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,22 +126,9 @@
 	<button type="submit">Submit</button>
 	
 	</form>
-<div id="resultsBox" style="display:none; margin-top:20px; padding:15px; border:2px solid #4CAF50; border-radius:8px; background-color:#e8f5e9; font-size:18px; color:#2e7d32;">
-    <strong>Score:</strong> <span id="scoreValue"></span>
-</div>
 
 <script>
-    const endpointURL = "https://script.google.com/macros/s/AKfycbyPeCu9GYWXsl75xiowGisnGXWVBGSXFK87xI7q6PZbwE_NMT58JRVwcFOfvLvfkk0n/exec"; // Replace with your deployed Apps Script URL
-
-    // Answer key
-    const answerKey = {
-        q1a: "b",
-        q2a: "a",
-        q2b: "a",
-        q3a: "d",
-        q3b: ["b", "c"],
-        q4b: ["b", "c"]
-    };
+    const endpointURL = "https://script.google.com/macros/s/AKfycbyPeCu9GYWXsl75xiowGisnGXWVBGSXFK87xI7q6PZbwE_NMT58JRVwcFOfvLvfkk0n/exec";
 
     document.getElementById("quizForm").addEventListener("submit", function(e) {
         e.preventDefault();
@@ -151,7 +138,6 @@
         const requiredCheckboxGroups = { q3b: 2, q4b: 2 };
         const openTextIds = ["openq1b", "openq4a"];
 
-        // Validate radio questions
         for (let q of requiredRadios) {
             if (!document.querySelector(`input[name="${q}"]:checked`)) {
                 alert(`Please answer question ${q.toUpperCase()}.`);
@@ -159,7 +145,6 @@
             }
         }
 
-        // Validate checkbox questions
         for (let group in requiredCheckboxGroups) {
             const checked = document.querySelectorAll(`input[name="${group}"]:checked`);
             if (checked.length < requiredCheckboxGroups[group]) {
@@ -168,7 +153,6 @@
             }
         }
 
-        // Validate open text
         for (let id of openTextIds) {
             if (document.getElementById(id).value.trim() === "") {
                 alert("Please complete all written response questions.");
@@ -181,7 +165,6 @@
             return;
         }
 
-        // Gather form data
         const formData = {
             name: name,
             q1a: document.querySelector('input[name="q1a"]:checked').value,
@@ -194,58 +177,17 @@
             q4b: Array.from(document.querySelectorAll('input[name="q4b"]:checked')).map(cb => cb.value),
         };
 
-        // Client-side scoring
-        let score = 0;
-        let totalPossible = 0;
-
-        // Highlight radios
-        for (let key of ["q1a", "q2a", "q2b", "q3a"]) {
-            totalPossible++;
-            const correct = answerKey[key];
-            document.querySelectorAll(`input[name="${key}"]`).forEach(opt => {
-                const label = opt.parentNode;
-                if (opt.value === correct) {
-                    label.style.backgroundColor = "#c8e6c9"; // green
-                }
-                if (opt.checked && opt.value !== correct) {
-                    label.style.backgroundColor = "#ffcdd2"; // red
-                }
-            });
-            if (formData[key] === correct) score++;
-        }
-
-        // Highlight checkboxes
-        for (let key of ["q3b", "q4b"]) {
-            totalPossible++;
-            const correctSet = answerKey[key].sort();
-            document.querySelectorAll(`input[name="${key}"]`).forEach(opt => {
-                const label = opt.parentNode;
-                if (correctSet.includes(opt.value)) {
-                    label.style.backgroundColor = "#c8e6c9"; // green
-                }
-                if (opt.checked && !correctSet.includes(opt.value)) {
-                    label.style.backgroundColor = "#ffcdd2"; // red
-                }
-            });
-            const selectedSet = formData[key].sort();
-            if (JSON.stringify(selectedSet) === JSON.stringify(correctSet)) score++;
-        }
-
-        // Show score
-        document.getElementById("scoreValue").textContent = `${score} / ${totalPossible}`;
-        document.getElementById("resultsBox").style.display = "block";
-
-        // Send to Google Apps Script
         fetch(endpointURL, {
             method: "POST",
             body: JSON.stringify(formData),
-            headers: { "Content-Type": "application/json" }
-        })
-        .then(res => res.json())
-        .then(response => {
-            if (response.status !== "success") {
-                alert("There was a problem submitting your form. Please try again.");
+            headers: {
+                "Content-Type": "application/json"
             }
+        })
+        .then(res => res.text())
+        .then(() => {
+            alert("Form submitted successfully!");
+            document.getElementById("quizForm").reset();
         })
         .catch(err => {
             console.error("Submission error:", err);
@@ -253,7 +195,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>
