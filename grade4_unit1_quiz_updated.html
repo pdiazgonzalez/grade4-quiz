@@ -9,13 +9,15 @@
         h1, h2, h3 { text-align: center; }
         .container { max-width: 800px; margin: auto; }
         .question { margin-bottom: 20px; }
+        .correct { background-color: #d4edda; }
+        .incorrect { background-color: #f8d7da; }
+        .feedback { font-weight: bold; margin-top: 5px; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Grade 4 Unit 1 Literature Common Assessment</h1>
-      
         <h2>Standards</h2>
         <p><strong>RL.4.1:</strong> Refer to details and examples in a text when explaining what the text says explicitly and  when drawing inferences from the text.</p>
         <p><strong>RL.4.2:</strong> Determine the theme of a story, drama, or poem from details in the text; summarize the text.</p>
@@ -52,148 +54,240 @@
 	<p><strong>14.</strong> Some people were helpful and some people just shut their doors on us. Sometimes people were surprised to find a ten-year-old on their doorstep. I tried to use that to my advantage. “I used to think politics was just for grown-ups,” I explained. “Now that I’m getting to know my community, I can see that politics touches everybody’s life. Everyone cares about something that a city council member can help with. That’s why it matters to elect someone who cares, too—like my mom, Kyla Walker.”</p>
 	<p><strong>15.</strong> <b><u>Canvassing</b></u> worked! Many folks grew excited that my mom was running. They liked her goals: repairing our roads, creating new jobs, and funding our schools. Some supporters were so enthusiastic that they decided to volunteer with our campaign, and suddenly we had a whole team to help us. They went <b><u>canvassing</b></u>, too, working to convince our community that my mom would be the best representative.</p>
 	<p><strong>16.</strong> At last, after three months, election night arrived. My mom told me, “Remember, Jasmine, no matter what happens, we’ve already won. We tried our hardest, and we’ve brought our community together. That’s no small thing.” I nodded, but my stomach felt like it was full of butterflies. I knew my mom was right, but I still really wanted her to win.</p>
-	<p><strong>17.</strong> Finally, the news anchor cleared her throat, and the room went silent. “It’s been a tight city council race in Ward 6 between current representative Frank LaValle and challenger Kyla Walker,” the anchor said. “The final ballots are in, and the winner is . . .”The butterflies in my stomach went wild. “Kyla Walker!”</p>
-  
+	<p><strong>17.</strong> Finally, the news anchor cleared her throat, and the room went silent. “It’s been a tight city council race in Ward 6 between current representative Frank LaValle and challenger Kyla Walker,” the anchor said. “The final ballots are in, and the winner is . . .”The butterflies in my stomach went wild. “Kyla Walker!”</p>    
        <h2>Questions</h2>
 
-      <form id="quizForm">
+      <form id="quizForm" onsubmit="submitQuiz(event)">
 
-        <div class="question">
+        <div class="question" data-answer="b" data-type="radio" data-name="q1a">
             <p><strong>1a. From these themes, which one do you think is the <u>best</u> represented in this text? (RL.4.2)</strong></p>
-            <input type="radio" name="q1a" value="a"> a) You should always be honest. <br>
-            <input type="radio" name="q1a" value="b"> b) You can work together to make a change in your community. <br>
-            <input type="radio" name="q1a" value="c"> c) You can always make friends with anyone. <br>
-            <input type="radio" name="q1a" value="d"> d) Kids can make a difference. <br>
+            <label><input type="radio" id="q1a" name="q1a" value="a"> a) You should always be honest. <br></label>
+            <label><input type="radio" id="q1a" name="q1a" value="b"> b) You can work together to make a change in your community. <br></label>
+            <label><input type="radio" id="q1a" name="q1a" value="c"> c) You can always make friends with anyone. <br></label>
+            <label><input type="radio" id="q1a" name="q1a" value="d"> d) Kids can make a difference. <br></label>
         </div>
           
-        <div class="question">
+       <div class="question" data-type="openq1b" data-name="q1b">
             <p><strong>1b. Explain your selection in Part A using complete sentences and evidence from the text. (RL.4.2)</strong></p>
             <textarea id="openq1b" rows="4" cols="50"></textarea>
         </div>
 
-        <div class="question">
+        <div class="question" data-answer="a" data-type="radio" data-name="q2a">
             <p><strong>2a. Select the statement that <u>best</u> describes what kind of city council leader Jasmine’s mother would be if she won the election. (RL.4.1)</strong></p>
-            <input type="radio" name="q2a" value="a"> a) Jasmine’s mother would be a caring leader. <br>
-            <input type="radio" name="q2a" value="b"> b) Jasmine’s mother would be an organized leader. <br>
-            <input type="radio" name="q2a" value="c"> c) Jasmine’s mother would be an empathetic leader. <br>
-            <input type="radio" name="q2a" value="d"> d) Jasmine’s mother would be a hardworking leader. <br>
+            <label><input type="radio" id="q2a" name="q2a" value="a"> a) Jasmine’s mother would be a caring leader. <br></label>
+            <label><input type="radio" id="q2a" name="q2a" value="b"> b) Jasmine’s mother would be an organized leader. <br></label>
+            <label><input type="radio" id="q2a" name="q2a" value="c"> c) Jasmine’s mother would be an empathetic leader. <br></label>
+            <label><input type="radio" id="q2a" name="q2a" value="d"> d) Jasmine’s mother would be a hardworking leader. <br></label>
         </div>
 
-        <div class="question">
+        <div class="question" data-answer="a" data-type="radio" data-name="q2b">
             <p><strong>2b. What evidence from the story supports your answer? (RL.4.1)</strong></p>
-            <input type="radio" name="q2b" value="a"> a) She is a firefighter and has spent her whole life helping others. <br>
-            <input type="radio" name="q2b" value="b"> b) She has a flier to communicate all the things she plans to work on if she is elected. <br>
-            <input type="radio" name="q2b" value="c"> c) She has a daughter who will help her. <br>
-            <input type="radio" name="q2b" value="d"> d) She was working hard to knock on voters' doors to win the election. <br>
+            <label><input type="radio" name="q2b" id="q2b" value="a"> a) She is a firefighter and has spent her whole life helping others. <br></label>
+            <label><input type="radio" name="q2b" id="q2b" value="b"> b) She has a flier to communicate all the things she plans to work on if she is elected. <br></label>
+            <label><input type="radio" name="q2b" id="q2b" value="c"> c) She has a daughter who will help her. <br></label>
+            <label><input type="radio" name="q2b" id="q2b" value="d"> d) She was working hard to knock on voters' doors to win the election. <br></label>
         </div>
   
-	<div class="question">
+	<div class="question" data-answer="d" data-type="radio" data-name="q3a">
     	    <p><strong>3a. Choose the sentence below that <u>best summarizes</u> the story. (RL.4.2)</strong></p>
-            <input type="radio" name="q3a" value="a"> a) Kyla learns about city councils from her social studies teacher and convinces her mom to run for office. She wins the election. <br>
-            <input type="radio" name="q3a" value="b"> b) Kyla and her mom canvassed their neighborhood to try and win votes in the election. They convince enough people that she would make a positive impact on their town. <br>
-            <input type="radio" name="q3a" value="c"> c) The boss at the fire station tells Kyla’s mom that she should run for office. She listens to him so she can make a positive change for her town and she tries to win the election. <br>
-            <input type="radio" name="q3a" value="d"> d) Kyla’s mom is a firefighter who realizes the way to help make positive changes that her community needs is by running for city council. Kyla helps her mom campaign and she wins the election. <br>
+            <label><input type="radio" name="q3a" id="q3a" value="a"> a) Kyla learns about city councils from her social studies teacher and convinces her mom to run for office. She wins the election. <br></label>
+            <label><input type="radio" name="q3a" id="q3a" value="b"> b) Kyla and her mom canvassed their neighborhood to try and win votes in the election. They convince enough people that she would make a positive impact on their town. <br></label>
+            <label><input type="radio" name="q3a" id="q3a" value="c"> c) The boss at the fire station tells Kyla’s mom that she should run for office. She listens to him so she can make a positive change for her town and she tries to win the election. <br></label>
+            <label><input type="radio" name="q3a" id="q3a" value="d"> d) Kyla’s mom is a firefighter who realizes the way to help make positive changes that her community needs is by running for city council. Kyla helps her mom campaign and she wins the election. <br></label>
         </div>
   
-	<div class="question">
+	<div class="question" data-answer="b,c" data-type="checkbox" data-name="q3b">
             <p><strong>3b. Which <u>two</u> pieces of evidence from the passage <u>best</u> support the answer to part a? (RL.4.2)</strong></p>
-            <input type="checkbox" name="q3b" value="a"> a) She pointed to a map: our district, Ward 6, was in the western part of the city, near the river. “In order to run for your local seat, first you need to get your name on the official ballot.” <br>
-            <input type="checkbox" name="q3b" value="b"> b) “I’m tired of our concerns being ignored or put off until later. Folks in this town rely on the fire department for help. We need a bridge over the river to help with traffic, and we need to fix the roads.” <br>
-            <input type="checkbox" name="q3b" value="c"> c) Some supporters were so enthusiastic that they decided to volunteer with our campaign, and suddenly we had a whole team to help us. They went canvassing, too, working to convince our community that my mom would be the best representative. <br>
-            <input type="checkbox" name="q3b" value="d"> d) We tried our hardest, and we’ve brought our community together. That’s no small thing.” I nodded, but my stomach felt like it was full of butterflies. I knew my mom was right, but I still really wanted her to win. <br>
-            <input type="checkbox" name="q3b" value="e"> e) My mom shook her head and sighed, “My job is to put out fires, Jasmine, not fix the roads.” <br>
+            <label><input type="checkbox" name="q3b" id="q3b" value="a"> a) She pointed to a map: our district, Ward 6, was in the western part of the city, near the river. “In order to run for your local seat, first you need to get your name on the official ballot.” <br></label>
+            <label><input type="checkbox" name="q3b" id="q3b" value="b"> b) “I’m tired of our concerns being ignored or put off until later. Folks in this town rely on the fire department for help. We need a bridge over the river to help with traffic, and we need to fix the roads.” <br></label>
+            <label><input type="checkbox" name="q3b" id="q3b" value="c"> c) Some supporters were so enthusiastic that they decided to volunteer with our campaign, and suddenly we had a whole team to help us. They went canvassing, too, working to convince our community that my mom would be the best representative. <br></label>
+            <label><input type="checkbox" name="q3b" id="q3b" value="d"> d) We tried our hardest, and we’ve brought our community together. That’s no small thing.” I nodded, but my stomach felt like it was full of butterflies. I knew my mom was right, but I still really wanted her to win. <br></label>
+            <label><input type="checkbox" name="q3b" id="q3b" value="e"> e) My mom shook her head and sighed, “My job is to put out fires, Jasmine, not fix the roads.” <br>
         </div>
 
-        <div class="question">
-            <p><strong>4a. What does the word canvassing mean in this text?  Write your answer in a complete sentence. (RL.4.4)</strong></p>
+        <div class="question" data-type="openq4a" data-name="4a">
+            <p><strong>4a. What does the word <em><u>canvassing</u></em> mean in this text?  Write your answer in a complete sentence. (RL.4.4)</strong></p>
             <textarea id="openq4a" rows="4" cols="50"></textarea>
         </div>
   
-	<div class="question">
+	<div class="question" data-answer="b,c" data-type="checkbox" data-name="q4b">
             <p><strong>4b. Select TWO details from the text or picture that helps you understand the meaning of the word <em><u>canvassing</u></em> in paragraph 13? (RL.4.4)</strong></p>
-            <input type="checkbox" name="q4b" value="a"> a) “Canvassing worked!” <br>
-            <input type="checkbox" name="q4b" value="b"> b) “Now we knock on doors.” <br>
-            <input type="checkbox" name="q4b" value="c"> c) “Some people were helpful and some people just shut their doors on us.” <br>
-            <input type="checkbox" name="q4b" value="d"> d) “Now that I am getting to know my community, I can see that politics touches everyone.” <br>
-            <input type="checkbox" name="q4b" value="e"> e) “That’s why it matters to elect someone who cares too.” <br>
+            <label><input type="checkbox" name="q4b" id="q4b" value="a"> a) “Canvassing worked!” <br></label>
+            <label><input type="checkbox" name="q4b" id="q4b" value="b"> b) “Now we knock on doors.” <br></label>
+            <label><input type="checkbox" name="q4b" id="q4b" value="c"> c) “Some people were helpful and some people just shut their doors on us.” <br></label>
+            <label><input type="checkbox" name="q4b" id="q4b" value="d"> d) “Now that I am getting to know my community, I can see that politics touches everyone.” <br></label>
+            <label><input type="checkbox" name="q4b" id="q4b" value="e"> e) “That’s why it matters to elect someone who cares too.” <br></label>
         </div>
         
-        <div class="question">
-  <p><strong>Student Name (required):</strong></p>
-  <input type="text" name="studentName" id="studentName" required>
-</div>
+  <label>
+  Name & Last Name (required): 
+  <input type="text" id="studentName" name="name" placeholder="Student Name" required>
+</label>
+
+<label>
+  Teacher: 
+  <input type="text" id="teacherName" name="teacher" placeholder="Teacher Name" required>
+</label>
 
 	<button type="submit">Submit</button>
-	
 	</form>
-
+  
+  <div id="result" style="margin-top:20px; font-weight:bold;"></div>
+<style>
+  .unanswered {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+    padding: 8px;
+    border-radius: 5px;
+  }
+</style>
 <script>
-    const endpointURL = "https://script.google.com/macros/s/AKfycbxPm2FufGlgCVJuHFkJx3s2gGcnOzV8t1LGZ4xWyDwXeLyPJSb4PLlpP40boq0Q2yn1/exec";
+document.getElementById("quizForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let score = 0;
+    let total = 0;
+    let openResponses = [];
+    let allAnswered = true;
+    let firstUnanswered = null;
 
-    document.getElementById("quizForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById("studentName").value.trim();
-        const requiredRadios = ["q1a", "q2a", "q2b", "q3a"];
-        const requiredCheckboxGroups = { q3b: 2, q4b: 2 };
-        const openTextIds = ["openq1b", "openq4a"];
-
-        for (let q of requiredRadios) {
-            if (!document.querySelector(`input[name="${q}"]:checked`)) {
-                alert(`Please answer question ${q.toUpperCase()}.`);
-                return;
-            }
-        }
-
-        for (let group in requiredCheckboxGroups) {
-            const checked = document.querySelectorAll(`input[name="${group}"]:checked`);
-            if (checked.length < requiredCheckboxGroups[group]) {
-                alert(`Please select ${requiredCheckboxGroups[group]} answers for ${group.toUpperCase()}.`);
-                return;
-            }
-        }
-
-        for (let id of openTextIds) {
-            if (document.getElementById(id).value.trim() === "") {
-                alert("Please complete all written response questions.");
-                return;
-            }
-        }
-
-        if (!name) {
-            alert("Please enter your name.");
-            return;
-        }
-
-        const formData = {
-            name: name,
-            q1a: document.querySelector('input[name="q1a"]:checked').value,
-            q1b: document.getElementById("openq1b").value.trim(),
-            q2a: document.querySelector('input[name="q2a"]:checked').value,
-            q2b: document.querySelector('input[name="q2b"]:checked').value,
-            q3a: document.querySelector('input[name="q3a"]:checked').value,
-            q3b: Array.from(document.querySelectorAll('input[name="q3b"]:checked')).map(cb => cb.value),
-            q4a: document.getElementById("openq4a").value.trim(),
-            q4b: Array.from(document.querySelectorAll('input[name="q4b"]:checked')).map(cb => cb.value),
-        };
-
-        fetch(endpointURL, {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.text())
-        .then(() => {
-            alert("Form submitted successfully!");
-            document.getElementById("quizForm").reset();
-        })
-        .catch(err => {
-            console.error("Submission error:", err);
-            alert("There was a problem submitting your form.");
-        });
+    // Clear old highlights
+    document.querySelectorAll(".question").forEach(q => {
+        q.classList.remove("unanswered", "correct", "incorrect");
     });
+
+    // --- Pass 1: Validation only ---
+    document.querySelectorAll(".question").forEach(q => {
+        const type = q.dataset.type;
+        const name = q.dataset.name;
+
+        if (type === "radio") {
+            total++;
+            const chosen = document.querySelector(`input[name="${name}"]:checked`);
+            if (!chosen) {
+                allAnswered = false;
+                q.classList.add("unanswered");
+                if (!firstUnanswered) firstUnanswered = q;
+            }
+        } else if (type === "checkbox") {
+            total++;
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`));
+            if (selected.length !== 2) {
+                allAnswered = false;
+                q.classList.add("unanswered");
+                if (!firstUnanswered) firstUnanswered = q;
+            }
+        } else {
+            const textarea = q.querySelector("textarea");
+            if (textarea && textarea.value.trim() === "") {
+                allAnswered = false;
+                q.classList.add("unanswered");
+                if (!firstUnanswered) firstUnanswered = q;
+            }
+        }
+    });
+
+    if (!allAnswered) {
+        alert("⚠️ Please answer all questions. (Checkbox questions must have exactly TWO choices.)");
+        if (firstUnanswered) {
+            firstUnanswered.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
+    }
+
+    // --- Collect answers ---
+    let detailedAnswers = {};
+    document.querySelectorAll(".question").forEach(q => {
+        const type = q.dataset.type;
+        const correct = q.dataset.answer;
+        const name = q.dataset.name;
+        let studentAnswer = "";
+
+        if (type === "radio") {
+            const chosen = document.querySelector(`input[name="${name}"]:checked`);
+            studentAnswer = chosen.value;
+            if (chosen.value === correct) {
+                score++;
+                q.classList.add("correct");
+            } else {
+                q.classList.add("incorrect");
+            }
+        } else if (type === "checkbox") {
+            const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
+            studentAnswer = selected.join(",");
+            const correctAnswers = correct.split(",");
+            const isCorrect = selected.length === correctAnswers.length &&
+                              correctAnswers.every(ans => selected.includes(ans));
+            if (isCorrect) {
+                score++;
+                q.classList.add("correct");
+            } else {
+                q.classList.add("incorrect");
+            }
+        } else {
+            const textarea = q.querySelector("textarea");
+            if (textarea) {
+                studentAnswer = textarea.value.trim();
+                openResponses.push({ question: q.querySelector("p").innerText, answer: studentAnswer });
+                q.classList.add("correct");
+            }
+        }
+
+        detailedAnswers[name] = studentAnswer;
+    });
+
+    const percent = Math.round((score / total) * 100);
+
+    const studentName = document.querySelector('input[name="name"]').value;
+    const teacherName = document.querySelector('input[name="teacher"]').value;
+
+    // Display report
+    let openHTML = "";
+    if (openResponses.length > 0) {
+        openHTML = "<h3>Open-Ended Responses</h3><ul>";
+        openResponses.forEach(r => {
+            openHTML += `<li><strong>${r.question}</strong><br>Response: ${r.answer}</li>`;
+        });
+        openHTML += "</ul>";
+    }
+
+    document.getElementById("result").innerHTML = `
+        <h3>Student Report Card</h3>
+        <p><strong>Student:</strong> ${studentName}</p>
+        <p><strong>Teacher:</strong> ${teacherName}</p>
+        <p><strong>Score:</strong> ${score} out of ${total} correct (${percent}%).</p>
+        <p><em>Note:</em> Only multiple-choice and checkbox questions are auto-graded.</p>
+        ${openHTML}
+    `;
+
+    // --- Submit to Google Sheets ---
+    const payload = {
+        studentName,
+        teacherName,
+        score,
+        percent,
+        ...detailedAnswers
+    };
+
+    const formBody = Object.keys(payload)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(payload[key]))
+        .join("&");
+
+    fetch("https://script.google.com/macros/s/AKfycbx8fEANb1GMmRybNcwhrDxLX1uDtjN6KCe4oQx2U8hjf7XxwrbXvE8GYYtdFBGpR6AuCw/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formBody
+    })
+    .then(res => res.text())
+    .then(data => {
+        console.log("Server response:", data);
+        alert("Quiz submitted successfully!");
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("There was an error submitting your quiz.");
+    });
+
+});
 </script>
 
 </body>
