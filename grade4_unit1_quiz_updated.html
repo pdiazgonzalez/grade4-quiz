@@ -1,18 +1,52 @@
-  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>4 Unit 1 Literature Common Assessment</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        body { font-family: Verdana, sans-serif; line-height: 1.6; margin: 40px; font-size: 1.8em; }
         h1, h2, h3 { text-align: center; }
-        .container { max-width: 800px; margin: auto; }
+        .container { max-width: 1200px; margin: auto; }
         .question { margin-bottom: 20px; }
         .correct { background-color: #d4edda; }
         .incorrect { background-color: #f8d7da; }
         .feedback { font-weight: bold; margin-top: 5px; }
-    </style>
+      input[type="checkbox"] {
+            transform: scale(2.5);
+            margin: 10px;
+            background-color: blue;
+        }
+      input[type="radio"] {
+            transform: scale(2.5);
+            margin: 10px;
+            background-color: blue;
+        }
+      button[type="submit"] {
+          width: 350px; /* Sets a fixed width */
+          height: 80px; /* Sets a fixed height */
+          padding: 10px 20px; /* Adds padding inside the button, affecting its visual size */
+          background-color: #4CAF50; /* Sets the background color (e.g., green) */
+          color: white; /* Sets the text color to white */
+          font-size: 1.5em; /* Sets the font size in pixels */
+          margin: 30px;
+}  
+          #teacherName {
+      width: 280px;
+      height: 60px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: #333;
+      background-color: #fcfc03;
+    }
+  hr.rounded {
+  border-top: 15px solid #bbb;
+  border-radius: 5px;
+}
+  </style>
 </head>
 <body>
 
@@ -21,14 +55,16 @@
         <h2>Standards</h2>
         <p><strong>RL.4.1:</strong> Refer to details and examples in a text when explaining what the text says explicitly and  when drawing inferences from the text.</p>
         <p><strong>RL.4.2:</strong> Determine the theme of a story, drama, or poem from details in the text; summarize the text.</p>
-  <p><strong>RL.4.4:</strong> Determine the meaning of words and phrases as they are used in a text, including those that allude to significant characters found in mythology, Tall Tales and Fables.</p>
-  <p><strong>L.4.2:</strong> Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing.</p>
+        <p><strong>RL.4.4:</strong> Determine the meaning of words and phrases as they are used in a text, including those that allude to significant characters found in mythology, Tall Tales and Fables.</p>
+        <p><strong>L.4.2:</strong> Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing.</p>
 
         <h2>Directions</h2>
         <p>Read the text and answer the questions below.</p>
 
         <h2>Adapted from Mom for City Council (Raz-Kids)</h2>
-        <p><strong>Written By: Jessica Malardy</strong></p>
+        <p style="text-align: center"><strong>Written By: Jessica Malardy</strong></p>
+           
+       <img src="https://github.com/pdiazgonzalez/grade4-quiz/blob/main/Mom_City_Council.png?raw=true" alt="Mom for City Council" style="display: block; margin: auto; width: 33%;">
 
         <p><strong>1.</strong> It all began one afternoon at the Springfield Firehouse, where my mom works. “How can we do our jobs when the roads are so bad?” Sergeant Goodman grumbled.
 </p>
@@ -67,9 +103,9 @@
             <label><input type="radio" id="q1a" name="q1a" value="d"> d) Kids can make a difference. <br></label>
         </div>
           
-       <div class="question" data-type="openq1b" data-name="q1b">
+       <div class="question" data-type="openq1b" data-name="q1b-openended">
             <p><strong>1b. Explain your selection in Part A using complete sentences and evidence from the text. (RL.4.2)</strong></p>
-            <textarea id="openq1b" rows="4" cols="50"></textarea>
+            <textarea textarea style="font-size: 36px; color: #333333; font-family: 'Tahoma', sans-serif;" id="openq1b" rows="4" cols="50"></textarea>
         </div>
 
         <div class="question" data-answer="a" data-type="radio" data-name="q2a">
@@ -97,7 +133,7 @@
         </div>
   
 	<div class="question" data-answer="b,c" data-type="checkbox" data-name="q3b">
-            <p><strong>3b. Which <u>two</u> pieces of evidence from the passage <u>best</u> support the answer to part a? (RL.4.2)</strong></p>
+            <p><strong>3b. Which <u>TWO</u> pieces of evidence from the passage <u>best</u> support the answer to part 3a? (RL.4.2)</strong></p>
             <label><input type="checkbox" name="q3b" id="q3b" value="a"> a) She pointed to a map: our district, Ward 6, was in the western part of the city, near the river. “In order to run for your local seat, first you need to get your name on the official ballot.” <br></label>
             <label><input type="checkbox" name="q3b" id="q3b" value="b"> b) “I’m tired of our concerns being ignored or put off until later. Folks in this town rely on the fire department for help. We need a bridge over the river to help with traffic, and we need to fix the roads.” <br></label>
             <label><input type="checkbox" name="q3b" id="q3b" value="c"> c) Some supporters were so enthusiastic that they decided to volunteer with our campaign, and suddenly we had a whole team to help us. They went canvassing, too, working to convince our community that my mom would be the best representative. <br></label>
@@ -105,13 +141,13 @@
             <label><input type="checkbox" name="q3b" id="q3b" value="e"> e) My mom shook her head and sighed, “My job is to put out fires, Jasmine, not fix the roads.” <br>
         </div>
 
-        <div class="question" data-type="openq4a" data-name="4a">
+        <div class="question" data-type="openq4a" data-name="q4a-openended">
             <p><strong>4a. What does the word <em><u>canvassing</u></em> mean in this text?  Write your answer in a complete sentence. (RL.4.4)</strong></p>
-            <textarea id="openq4a" rows="4" cols="50"></textarea>
+            <textarea textarea style="font-size: 36px; color: #333333; font-family: 'Tahoma', sans-serif;"id="openq4a" rows="4" cols="50"></textarea>
         </div>
   
 	<div class="question" data-answer="b,c" data-type="checkbox" data-name="q4b">
-            <p><strong>4b. Select TWO details from the text or picture that helps you understand the meaning of the word <em><u>canvassing</u></em> in paragraph 13? (RL.4.4)</strong></p>
+            <p><strong>4b. Select <u>TWO</u> details from the text or picture that helps you understand the meaning of the word <em><u>canvassing</u></em> in paragraph 13? (RL.4.4)</strong></p>
             <label><input type="checkbox" name="q4b" id="q4b" value="a"> a) “Canvassing worked!” <br></label>
             <label><input type="checkbox" name="q4b" id="q4b" value="b"> b) “Now we knock on doors.” <br></label>
             <label><input type="checkbox" name="q4b" id="q4b" value="c"> c) “Some people were helpful and some people just shut their doors on us.” <br></label>
@@ -119,15 +155,34 @@
             <label><input type="checkbox" name="q4b" id="q4b" value="e"> e) “That’s why it matters to elect someone who cares too.” <br></label>
         </div>
         
-  <label>
+<hr class="rounded">
+    <p style="text-align: center; font-size: 40px; color: brown; font-family: 'Verdana', sans-serif;"><b>This is the end of the test.</b></p>
+    <p style="text-align: left; font-size: 28px; color: brown; font-family: 'Verdana', sans-serif;"><em> Make sure that you:</em></p>
+    <ul>
+    <li style="color: brown;">Check your answers before submitting the test.</li>
+      <li style="color: brown;">Type in your <b>name</b> and <b>last name</b> <u>correctly</u></li>
+    <li style="color: brown;">Enter <u>your</u> <b>teacher</b>'s name.</li>
+    </ul>
+    <p style="font-size: 28px; color: brown; font-family: 'Verdana', sans-serif;"><em>When you are ready, click 'Submit' and your test will be auto-graded.</em></p>
+
+    <hr class="rounded">  
+  
+    <label><p>
   Name & Last Name (required): 
-  <input type="text" id="studentName" name="name" placeholder="Student Name" required>
+  <input style="width: 400px; height: 45px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: Georgia, serif; font-size: 24px; color: #030303; background-color: #fcfc03;background-color: #fcfc03" type="text" id="studentName" name="name" placeholder="Type Your Name Here" required>
+</p></label>
+
+<label><p>
+  Teacher (required):
+ <select id="teacherName" name="teacher" required>
+    <option value="" disabled selected>Select your teacher</option>
+    <option value="Ms. Becerril">Becerril</option>
+    <option value="Mrs. Cerwin">Cerwin</option>
+    <option value="Mr. Diaz">Diaz</option>
+  </select></p>
 </label>
 
-<label>
-  Teacher: 
-  <input type="text" id="teacherName" name="teacher" placeholder="Teacher Name" required>
-</label>
+<hr class="rounded">
 
 	<button type="submit">Submit</button>
 	</form>
