@@ -293,7 +293,7 @@ document.getElementById("quizForm").addEventListener("submit", function(e) {
     const percent = Math.round((score / total) * 100);
 
     const studentName = document.querySelector('input[name="name"]').value;
-    const teacherName = document.querySelector('input[name="teacher"]').value;
+    const teacherName = document.querySelector('[name="teacher"]').value;
 
     // Display report
     let openHTML = "";
@@ -327,7 +327,7 @@ document.getElementById("quizForm").addEventListener("submit", function(e) {
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(payload[key]))
         .join("&");
 
-    fetch("https://script.google.com/macros/s/AKfycbx8fEANb1GMmRybNcwhrDxLX1uDtjN6KCe4oQx2U8hjf7XxwrbXvE8GYYtdFBGpR6AuCw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxs6IcIg1L1r8y0T2yc6gljU34rdGQReLa0wtuW3x0YRjOR4pwbGDCZXwf9M2Q5qN8v_g/exec", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formBody
