@@ -329,7 +329,7 @@ document.getElementById("quizForm").addEventListener("submit", function(e) {
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(payload[key]))
         .join("&");
 
-    fetch("https://script.google.com/macros/s/AKfycbxs6IcIg1L1r8y0T2yc6gljU34rdGQReLa0wtuW3x0YRjOR4pwbGDCZXwf9M2Q5qN8v_g/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbz7ujYPH-7VFJ41wMfEwU50Zw1_a_SWt8VzgvTn3uSeksn83Gd2qmgdvM9WqDjy7gxwTw/exec", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formBody
